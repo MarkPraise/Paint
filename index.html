@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas tutorial</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="dist/css/style.min.css">
+    <script src="main.js"  type="module"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="header-nav">
+            <h2>Mark's Paint</h2>
+            <span>
+                <i class="bi bi-hand-thumbs-up"></i>
+            </span>
+        </nav>
+    </header>
+    <main class="main">
+        <h1 class="text-center pad-block">Simple Paint Application</h1>
+        <div class="container">
+            <canvas width="900" height="400" id="canvas" class="canvas "></canvas>
+            <div class="color_selection">
+                <div class="color-picker">
+                    <label for="color" >Choose A Color</label>
+                    <input type="color" id="color" value="#df9911">
+                </div>
+                <div class="flexButtons">
+                    <div>
+                        <button class="clearAll">Clear</button>
+                    </div>
+                    <div class="eraser">
+                        <button class="eraseButton pad-block">
+                            <i class="bi bi-eraser"></i>
+                            <span>Erase</span>
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+</body>
+</html>
