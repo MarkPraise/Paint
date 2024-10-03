@@ -1,5 +1,3 @@
-import { Paint } from "./paint.js";
-
 const canvas = document.getElementById("canvas");
 
 const ctx =canvas.getContext("2d");
@@ -34,27 +32,16 @@ eraseButton.addEventListener("click",()=>{
 
 canvas.addEventListener("mousemove",(event)=>{
     if(isClickOn){
-        
-        let paint =new Paint();
-        
-        paint.setColor(paintColor.value);
-        paint.setXCoord(event.offsetX);
-        paint.setYCoord(event.offsetY);
 
-        let x_coord =paint.getXCoord();
-        let y_coord =paint.getYCoord();
-        let color = paint.getColor();
+        let x_coord =event.offsetX;
+        let y_coord =event.offsetY;
+        let color = paintColor.value;
 
 
         if(erase){
-
-            ctx.clearRect(x_coord,y_coord,5,5);
-            
+            ctx.clearRect(x_coord,y_coord,5,5);         
         }
         else{
-            
-            // Paint.storePixels(x_coord,y_coord);
-
             ctx.fillStyle =color;
             ctx.fillRect(x_coord,y_coord,5,5);
         }
