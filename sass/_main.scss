@@ -70,14 +70,12 @@ body{
             }
 
             input{
-                outline: none;
-                border: 2px solid gray;
-                background: rgb(216, 214, 214);
+                
                 border-radius: 50%;
                 cursor: pointer;
                 height: 40px;
                 width: 40px;
-                appearance: none;
+                // appearance: none;
                 padding: 20px;
                 
             }

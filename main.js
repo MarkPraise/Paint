@@ -7,7 +7,11 @@ const paintColor =document.querySelector('input[type="color"]');
 const eraseButton =document.querySelector(".eraseButton span");
 const clearAll =document.querySelector(".clearAll");
 
-
+// sets the bgColor
+paintColor.style.backgroundColor = paintColor.value;
+paintColor.addEventListener("change",()=>{
+    paintColor.style.backgroundColor = paintColor.value;
+})
 
 let isClickOn = false;
 
