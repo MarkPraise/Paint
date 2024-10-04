@@ -21,7 +21,6 @@ clearAll.addEventListener("click",()=>{
     ctx.clearRect(0,0,canvas.width,canvas.height);
 })
 
-
 eraseButton.addEventListener("click",()=>{
     if(!erase){
         eraseButton.textContent ="Stop Erasing";
@@ -34,30 +33,50 @@ eraseButton.addEventListener("click",()=>{
 })
 
 
-canvas.addEventListener("mousemove",(event)=>{
+canvas.addEventListener("mousemove",(e)=>{
     if(isClickOn){
 
-        let x_coord =event.offsetX;
-        let y_coord =event.offsetY;
+        let x_coord =e.offsetX;
+        let y_coord =e.offsetY;
         let color = paintColor.value;
 
 
-        if(erase){
-            ctx.clearRect(x_coord,y_coord,5,5);         
+        if(erase){ 
+            ctx.beginPath();
+            ctx.moveTo(firstEvent.offsetX, firstEvent.offsetY);
+            ctx.lineTo(x_coord, y_coord);
+            ctx.strokeStyle = "white";
+            ctx.lineWidth = 7;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            firstEvent = e;       
         }
         else{
-            ctx.fillStyle =color;
-            ctx.fillRect(x_coord,y_coord,5,5);
+            ctx.beginPath();
+            ctx.moveTo(firstEvent.offsetX, firstEvent.offsetY);
+            ctx.lineTo(x_coord, y_coord);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 5;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+            firstEvent = e;
         }
+
     }
 })
 
-canvas.addEventListener("mousedown",()=>{
+let firstEvent;
+canvas.addEventListener("mousedown",(e)=>{
     isClickOn =true;
+    firstEvent =e;
 })
-canvas.addEventListener("mouseup",()=>{
-    isClickOn =false;
+
+const stopToDraw = ["mouseover","mouseup"].map((event)=>{
+    canvas.addEventListener(event,()=>{
+        isClickOn = false
+    })
 })
+
 
 function saveCanvas() {
     const dataURL = canvas.toDataURL(); 
